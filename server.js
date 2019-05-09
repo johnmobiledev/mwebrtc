@@ -7,9 +7,18 @@ var socketIO = require('socket.io');
 
 var fileServer = new(nodeStatic.Server)();
 var app = http.createServer(function(req, res) {
+  res.writeHead(200, {
+    'Content-Type': 'text/plain',
+    'Access-Control-Allow-Origin' : '*',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
+  });
   fileServer.serve(req, res);
 }).listen(process.env.PORT || port);
 
+
+app.configure(function() {
+  app.use(allowCrossDomain);
+}); 
 
 var io = socketIO.listen(app);
 io.sockets.on('connection', function(socket) {
