@@ -10,11 +10,6 @@ var app = http.createServer(function(req, res) {
   fileServer.serve(req, res);
 }).listen(process.env.PORT || port);
 
-
-app.configure(function() {
-  app.use(allowCrossDomain);
-}); 
-
 var io = socketIO.listen(app);
 io.sockets.on('connection', function(socket) {
 
