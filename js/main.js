@@ -120,7 +120,7 @@ console.log('Getting user media with constraints', constraints);
 
 if (location.hostname !== 'localhost') {
   requestTurn(
-    'turn:turn01.hubl.in?transport=udp'
+    'turn:13.250.13.83:3478?transport=udp'
   );
 }
 
